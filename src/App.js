@@ -6,6 +6,18 @@ import About from "./About";
 import Contact from "./Contact";
 import Navigation from "./Navigation";
 
+function componentDidUpdate(prevProps) {
+    // NOTE: in order to have access to this information, you will need
+    // to wrap this component in the `withRouter` HOC
+
+    const { location: { pathname } } = this.props;
+    const previousLocation = prevProps.location.pathname;
+
+    if (pathname !== previousLocation) {
+      window.Appcues.page();
+    }
+  }
+
 const App = () => (
   <BrowserRouter>
     <div>
